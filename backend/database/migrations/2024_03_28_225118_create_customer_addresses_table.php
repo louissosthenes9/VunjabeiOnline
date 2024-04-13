@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('customer_addresses', function (Blueprint $table) {
             $table->id();
+            $table->string('type',45);
+            $table->string('address1');
+            $table->string('address2');
+            $table->string('city');
+            $table->string('state');
+            $table->string('zipcode');
+            $table->string('country_code');
+            $table->foreignId('customer_Id')->references('id')->on('customers');
+            $table->foreign('country_code')->references('code')->on('countries');
             $table->timestamps();
         });
     }
